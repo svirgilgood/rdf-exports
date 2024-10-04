@@ -2,6 +2,7 @@
   "name": "constraining-linked-open-data",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://svirgilgood.github.io/constraining-linked-open-data/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
