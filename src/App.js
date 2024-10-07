@@ -2,21 +2,10 @@ import "./App.css";
 
 import React, { useEffect, useState } from "react";
 
-import {
-  Deck,
-  Slide,
-  Markdown,
-  Heading,
-  DefaultTemplate,
-  MarkdownSlide,
-  MarkdownSlideSet,
-} from "spectacle";
+import { Deck, DefaultTemplate, MarkdownSlideSet } from "spectacle";
 
 //import raw from "data/ConstraintsFroLinkedOpenData.md";
 import raw from "./data/ConstraintsForLinkedOpenData.md";
-
-const mdText =
-  "# Use Markdown to write a slide\n This is a single slide composed using Markdown.\n - It uses the `animateListItems` prop so...\n - it's list items... \n - will animate in, one at a time.\n";
 
 function App() {
   const [md, setMd] = useState("");
@@ -26,11 +15,6 @@ function App() {
       .then((text) => setMd(text));
     console.log(typeof md);
   }, []);
-  // if (md !== "") {
-  //   let txtArray = md.split("\n#"); //.map((txt, idx) => {
-  //   console.log(txtArray);
-  //   //});
-  // }
   if (md === "") {
     return <div>Building</div>;
   }
