@@ -101,13 +101,17 @@ ucns:_DctermsSpatialProperty
   .
 ```
 
----
+--- {"layout" : "columns"}
 
 ## Matching Agreement of One among Many
+
+::section
 
 - Embedding SPARQL queries inside SHACL for more robust validation
 - This SPARQL query insures that the `dcterms:type` matches one of the `dc:type`.
 - There can be multiple types, but each one needs to have a match among the other property.
+
+::section
 
 ```turtle
   sh:sparql [
@@ -117,7 +121,7 @@ ucns:_DctermsSpatialProperty
     sh:select """
       SELECT $this (dc:type AS ?path) ?dcValue
       WHERE {
-          $this
+        $this
             $PATH ?termsValue ;
         .
         FILTER NOT EXISTS {
