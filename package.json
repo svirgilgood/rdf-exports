@@ -10,6 +10,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
+    "spectacle": "^10.1.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -39,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "raw.macro": "^0.7.0"
   }
 }
