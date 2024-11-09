@@ -1,16 +1,20 @@
 {
   "files": {
-    "main.css": "/constraining-linked-open-data/static/css/main.f855e6bc.css",
-    "main.js": "/constraining-linked-open-data/static/js/main.9c2e6a36.js",
+    "main.css": "/constraining-linked-open-data/static/css/main.539dded3.css",
+    "main.js": "/constraining-linked-open-data/static/js/main.6db79268.js",
     "static/js/453.d9d4cbd7.chunk.js": "/constraining-linked-open-data/static/js/453.d9d4cbd7.chunk.js",
-    "static/media/ConstraintsForLinkedOpenData.md": "/constraining-linked-open-data/static/media/ConstraintsForLinkedOpenData.93d732f475335649f6b0.md",
+    "static/media/graph_data.trig": "/constraining-linked-open-data/static/media/graph_data.56743e34c2aedbed4436.trig",
+    "static/media/2-Shacl-Examples.md": "/constraining-linked-open-data/static/media/2-Shacl-Examples.be87f776830db305a733.md",
+    "static/media/1-Introduction.md": "/constraining-linked-open-data/static/media/1-Introduction.8e8120a9116618a55cdc.md",
+    "static/media/3-Tips-For-Better-Shacl.md": "/constraining-linked-open-data/static/media/3-Tips-For-Better-Shacl.e584fc3f0c84102ae685.md",
     "index.html": "/constraining-linked-open-data/index.html",
-    "main.f855e6bc.css.map": "/constraining-linked-open-data/static/css/main.f855e6bc.css.map",
-    "main.9c2e6a36.js.map": "/constraining-linked-open-data/static/js/main.9c2e6a36.js.map",
+    "static/media/4-Bibliography.md": "/constraining-linked-open-data/static/media/4-Bibliography.f31e147268da291387d6.md",
+    "main.539dded3.css.map": "/constraining-linked-open-data/static/css/main.539dded3.css.map",
+    "main.6db79268.js.map": "/constraining-linked-open-data/static/js/main.6db79268.js.map",
     "453.d9d4cbd7.chunk.js.map": "/constraining-linked-open-data/static/js/453.d9d4cbd7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.9c2e6a36.js"
+    "static/css/main.539dded3.css",
+    "static/js/main.6db79268.js"
   ]
 }
