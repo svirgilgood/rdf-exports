@@ -1,5 +1,6 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcam: <http://purl.org/dc/dcam/> .
 @prefix edm: <http://www.europeana.eu/schemas/edm/> .
 @prefix ex: <http://example.com#> .
 @prefix gvo: <http://vocab.getty.edu/ontology#> .
@@ -12,6 +13,7 @@
 @prefix uchicago: <http://lib.uchicago.edu/> .
 @prefix ucns: <http://lib.uchicago.edu/shapes/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
 
 ucns:_ArkDctermsIdentifierExample  {
 
@@ -44,6 +46,50 @@ ucns:_ArkDctermsIdentifierData  {
     dcterms:identifier "https://bad-uri.net/ark:61001/b2nt2gw9rr65/file.wav" ;
     .
 }
+
+
+ucns:_DcTypeExample {
+  ucns:_DcTypeExampleShape 
+    a sh:NodeShape ;
+    sh:property ucns:_DcTypeProperty ;
+    sh:targetClass ex:DcTypeExample ;
+    .
+
+  ucns:_DcTypeProperty
+    sh:node [
+      rdf:type sh:NodeShape ;
+      sh:property [
+        sh:path dcam:memberOf ;
+        sh:hasValue dcterms:DCMIType ;
+      ] ;
+    ] ;
+    sh:message "All term types should belong to the DCM class" ;
+    sh:minCount "1"^^xsd:integer ;
+    sh:name "Type" ;
+    sh:path dc:type ;
+    .
+}
+
+ucns:_DcTypeExampleData {
+
+  ex:_DcTypeExampleOne 
+    a ex:DcTypeExample ;
+    dc:type dcmitype:Sound ;
+    .
+
+  ex:_DcTypeExampleTwo 
+    a ex:DcTypeExample ;
+    dc:type "Sound" ;
+    .
+
+  dcmitype:Sound 
+    a rdfs:Class ;
+    rdfs:label "Sound"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    .
+}
+
+
 
 ucns:_DctermsSpatialExample {
 
@@ -136,5 +182,13 @@ pres:_ShaclValidationArkIdentifiers
   pres:containsData ucns:_ArkDctermsIdentifierData ;
   pres:containsShape ucns:_ArkDctermsIdentifierExample ;
   pres:order "1"^^xsd:integer ;
+  .
+
+pres:_ConstraingDcTypes 
+  a pres:ShaclSlide ;
+  rdfs:label "Cosntraining DCMI Types" ;
+  pres:containsData ucns:_DcTypeExampleData ;
+  pres:containsShape ucns:_DcTypeExample ;
+  pres:order "3"^^xsd:integer ;
   .
 
