@@ -16,6 +16,7 @@ import shaclExamplesRaw from "./data/2-Shacl-Examples.md";
 import tipsRaw from "./data/3-Tips-For-Better-Shacl.md";
 import bibliographyRaw from "./data/4-Bibliography.md";
 import graphRaw from "./data/graph_data.trig";
+import SparqlSlide from "./components/SparqlValidationSlide";
 
 const parser = new Parser();
 
@@ -40,34 +41,15 @@ async function loadText(rawMarkdown, setMd) {
   setMd(text);
 }
 
-async function createStoreAndDisplay({
-  store,
-  slideNode,
-  setHookStore,
-  stateStore,
-  setHookDisplay,
-  stateDisplay,
-  prefixes,
-  predicate,
-}) {
-  const slideUri = slideNode.value;
-  const shapeNode = store.getObjects(slideNode, predicate).pop();
-  const newStore = new Store(store.getQuads(null, null, null, shapeNode));
-  setHookStore({ ...stateStore, [slideUri]: newStore });
-  const newDisplayString = await serialize(newStore, prefixes);
-  setHookDisplay({ ...stateDisplay, [slideUri]: newDisplayString });
-}
 function App() {
   const [introMd, setIntro] = useState("");
   const [shaclMd, setShaclMd] = useState("");
   const [tipsMd, setTips] = useState("");
   const [bibMd, setBib] = useState("");
   const [prefixes, setPrefixes] = useState({});
-  const [shapeStoreObj, setShapeStore] = useState({});
-  const [shapeDisplayObj, setShapeDisplay] = useState({});
-  const [dataStoreObj, setDataStore] = useState({});
-  const [dataDisplayObj, setDataDisplay] = useState({});
   const [shaclSlides, setShaclSlides] = useState([]);
+  const [sparqlSlides, setSparqlSlides] = useState([]);
+  const [store, setStore] = useState();
 
   // use effect to load markdown files
   useEffect(() => {
@@ -126,28 +108,77 @@ function App() {
         });
       }
       setShaclSlides(slides);
+      setStore(newStore);
     }
     loadGraph(graphRaw);
   }, []);
-  const updateShacl = (newCode, slideUri) => {
-    const quads = parser.parse(newCode);
-    const newStore = new Store(quads);
-    setShapeStore({ ...shapeStoreObj, [slideUri]: newStore });
-  };
-  const updateData = (newCode, slideUri) => {
-    const quads = parser.parse(newCode);
-    const newStore = new Store(quads);
-    setDataDisplay({ ...dataStoreObj, [slideUri]: newStore });
-    console.log(dataStoreObj);
-  };
-  if (!shaclSlides || shaclSlides.length === 0) {
+
+  // loading sparql slides and loading the graph should be
+  // combined into one function there is no reason that these functions should be
+  // split into two different useEffect statements
+  useEffect(() => {
+    if (!store) return;
+    async function createSparqlSlides(store) {
+      let sparqlSlides = store.getSubjects(rdf.type, pres.SparqlSlide);
+      sparqlSlides = sparqlSlides
+        .map((subject) => {
+          return store.getQuads(subject, pres.order).pop();
+        })
+        .sort((a, b) => {
+          if (a.object.value < b.object.value) return -1;
+          if (a.object.value > b.object.value) return 1;
+          return 0;
+        });
+
+      const slides = [];
+      for (const qwad of sparqlSlides) {
+        const shapeGraph = store
+          .getObjects(qwad.subject, pres.containsShape)
+          .pop();
+        const shapeStore = new Store(
+          store.getQuads(null, null, null, shapeGraph),
+        );
+        const shapeDisplayString = await serialize(shapeStore, prefixes);
+        const dataGraph = store
+          .getObjects(qwad.subject, pres.containsData)
+          .pop();
+        const dataStore = new Store(
+          store.getQuads(null, null, null, dataGraph),
+        );
+        const dataDisplayString = await serialize(dataStore, prefixes);
+        const initialQuery = store
+          .getObjects(qwad.subject, pres.hasScript)
+          .pop();
+        const title = store.getObjects(qwad.subject, rdfs.label).pop();
+        const uri = qwad.subject.value;
+        slides.push({
+          shapeStore,
+          shapeDisplayString,
+          dataStore,
+          dataDisplayString,
+          initialQuery: initialQuery.value,
+          title: title.value,
+          uri,
+        });
+      }
+      setSparqlSlides(slides);
+    }
+    createSparqlSlides(store);
+  }, [store]);
+
+  if (
+    !shaclSlides ||
+    shaclSlides.length === 0 ||
+    !sparqlSlides ||
+    sparqlSlides.length === 0
+  ) {
     return <div>Building</div>;
   }
 
   return (
     <Deck template={<DefaultTemplate />}>
       <MarkdownSlideSet>{introMd}</MarkdownSlideSet>
-      <MarkdownSlideSet>{shaclMd}</MarkdownSlideSet>
+      {/*<MarkdownSlideSet>{shaclMd}</MarkdownSlideSet>*/}
       {shaclSlides.map(
         ({
           title,
@@ -173,6 +204,35 @@ function App() {
           );
         },
       )}
+
+      {sparqlSlides.map(
+        ({
+          uri,
+          initialQuery,
+          shapeStore,
+          shapeDisplayString,
+          dataStore,
+          dataDisplayString,
+          title,
+        }) => {
+          return (
+            <Slide key={uri}>
+              <SparqlSlide
+                initialQuery={initialQuery}
+                shapeStore={shapeStore}
+                shapeDisplayString={shapeDisplayString}
+                dataStore={dataStore}
+                dataDisplayString={dataDisplayString}
+                title={title}
+                uri={uri}
+                store={store}
+                prefixes={prefixes}
+              />
+            </Slide>
+          );
+        },
+      )}
+
       <MarkdownSlideSet>{tipsMd}</MarkdownSlideSet>
       <MarkdownSlideSet>{bibMd}</MarkdownSlideSet>
     </Deck>
