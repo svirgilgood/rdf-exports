@@ -168,6 +168,53 @@ ucns:_DctermsSpatialData {
     .
 }
 
+ucns:_DctermsCreatedShapes {
+
+  ucns:_DctermsCreatedShape 
+    a sh:NodeShape ;
+    sh:property ucns:_CreatedProperty ;
+    sh:targetClass ex:CreatedExample ;
+    .
+
+  ucns:_CreatedProperty
+    sh:datatype xsd:dateTime ;
+    sh:maxCount "1"^^xsd:integer ;
+    sh:message "There should be only one created property with an xsd:dateTime datatype" ;
+    sh:minCount "1"^^xsd:integer ;
+    sh:name "Created" ;
+    sh:path dcterms:created ;
+    sh:sparql [
+      a sh:SPARQLConstraint ;
+      sh:message "At least one of the dcterms:modified values should equal the dcterms:created value." ;
+      sh:prefixes <http://lib.uchicago.edu/shapes/> ;
+      sh:select """
+        SELECT $this $PATH ?dcCreated
+        WHERE {
+            $this
+              $PATH ?dcCreated ;
+          .
+          FILTER NOT EXISTS {
+            ?this dcterms:modified ?dcCreated .
+          }
+        }
+      """ ;
+    ] ;
+    .
+}
+
+ucns:_DctermsCreatedData {
+  ex:_DctermsCreatedExOne 
+    a ex:CreatedExample ;
+    dcterms:modified "2024-10-12"^^xsd:date , "2024-10-11"^^xsd:date , "2024-10-10"^^xsd:date;
+    dcterms:created "2024-10-10"^^xsd:date ;
+    .
+  ex:_DctermsCreatedExTwo
+    a ex:CreatedExample ;
+    dcterms:modified "2024-11-11"^^xsd:date , "2024-11-10"^^xsd:date , "2024-11-09"^^xsd:date;
+    dcterms:created "2024-10-10"^^xsd:date ;
+    .
+}
+
 pres:_MachingDifferentPossibleClasses
   a pres:ShaclSlide ;
   rdfs:label "Matching One of Many Classes" ;
@@ -186,9 +233,33 @@ pres:_ShaclValidationArkIdentifiers
 
 pres:_ConstraingDcTypes 
   a pres:ShaclSlide ;
-  rdfs:label "Cosntraining DCMI Types" ;
+  rdfs:label "Constraining DCMI Types" ;
   pres:containsData ucns:_DcTypeExampleData ;
   pres:containsShape ucns:_DcTypeExample ;
   pres:order "3"^^xsd:integer ;
+  .
+
+pres:_UsingSparqlRules 
+  a pres:SparqlSlide ;
+  rdfs:label "Agreement of One among Many" ;
+  pres:order "4" ;
+  pres:containsData ucns:_DctermsCreatedData ;
+  pres:containsShape ucns:_DctermsCreatedShapes;
+  pres:hasScript """PREFIX dc: <http://purl.org/dc/elements/1.1/> 
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX ucns: <http://lib.uchicago.edu/shapes/> 
+
+SELECT ?s ("dcterms:created" AS ?path) ?dcCreated 
+WHERE { 
+  GRAPH ucns:_DctermsCreatedData {
+    ?s 
+      dcterms:created ?dcCreated ;
+    .
+    FILTER NOT EXISTS {
+      ?s dcterms:modified ?dcCreated .
+    }
+  }
+}
+  """^^<https://www.iana.org/assignments/media-types/application/sparql-query> ;
   .
 

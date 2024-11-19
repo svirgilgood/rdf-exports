@@ -40,8 +40,10 @@ const namespaces = {
   pres: {
     containsShape: namedNode(PresBase + "containsShape"),
     containsData: namedNode(PresBase + "containsData"),
+    hasScript: namedNode(PresBase + "hasScript"),
     order: namedNode(PresBase + "order"),
     ShaclSlide: namedNode(PresBase + "ShaclSlide"),
+    SparqlSlide: namedNode(PresBase + "SparqlSlide"),
   },
 };
 
