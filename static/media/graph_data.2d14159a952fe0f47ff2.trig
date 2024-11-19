@@ -1,0 +1,265 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix ex: <http://example.com#> .
+@prefix gvo: <http://vocab.getty.edu/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pres: <https://svirgilgood.github.io/constraining-linked-open-data/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix tgn: <http://vocab.getty.edu/tgn/> .
+@prefix uchicago: <http://lib.uchicago.edu/> .
+@prefix ucns: <http://lib.uchicago.edu/shapes/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+
+ucns:_ArkDctermsIdentifierExample  {
+
+  ucns:_RegExExampleShape
+    a sh:NodeShape ;
+    sh:property ucns:_ArkDctermsIdentifierProperty ;
+    sh:targetClass ex:RegexExample ;
+    .
+
+
+  ucns:_ArkDctermsIdentifierProperty
+    sh:datatype xsd:string ;
+    sh:maxCount "1"^^xsd:integer ;
+    sh:message "All resources with an ARK identifier need to have a match need to have an identifier." ;
+    sh:minCount "1"^^xsd:integer ;
+    sh:name "Identifier" ;
+    sh:path dcterms:identifier ;
+    sh:pattern "^https:\\/\\/n2t\\.net\\/ark:61001\\/[0-9a-zA-Z]{12}(\\/file(\\.(wav|tif)))?$" ;
+    .
+}
+
+ucns:_ArkDctermsIdentifierData  {
+  ex:_ExampleOne
+    a ex:RegexExample ;
+    dcterms:identifier "https://n2t.net/ark:61001/b2nt2gw9rr65" ;
+    .
+
+  ex:_ExampleTwo
+    a ex:RegexExample ;
+    dcterms:identifier "https://bad-uri.net/ark:61001/b2nt2gw9rr65/file.wav" ;
+    .
+}
+
+
+ucns:_DcTypeExample {
+  ucns:_DcTypeExampleShape 
+    a sh:NodeShape ;
+    sh:property ucns:_DcTypeProperty ;
+    sh:targetClass ex:DcTypeExample ;
+    .
+
+  ucns:_DcTypeProperty
+    sh:node [
+      rdf:type sh:NodeShape ;
+      sh:property [
+        sh:path dcam:memberOf ;
+        sh:hasValue dcterms:DCMIType ;
+      ] ;
+    ] ;
+    sh:message "All term types should belong to the DCM class" ;
+    sh:minCount "1"^^xsd:integer ;
+    sh:name "Type" ;
+    sh:path dc:type ;
+    .
+}
+
+ucns:_DcTypeExampleData {
+
+  ex:_DcTypeExampleOne 
+    a ex:DcTypeExample ;
+    dc:type dcmitype:Sound ;
+    .
+
+  ex:_DcTypeExampleTwo 
+    a ex:DcTypeExample ;
+    dc:type "Sound" ;
+    .
+
+  dcmitype:Sound 
+    a rdfs:Class ;
+    rdfs:label "Sound"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    .
+}
+
+
+
+ucns:_DctermsSpatialExample {
+
+  ucns:_DctermsSpatialExampleShape
+    a sh:NodeShape ;
+    sh:property ucns:_DctermsSpatialProperty ;
+    sh:targetClass ex:SpatialExample ;
+    .
+
+  ucns:_DctermsSpatialProperty
+    sh:message "The spatial property should have TGN identifier." ;
+    sh:minCount "1"^^xsd:integer ;
+    sh:name "Spatial" ;
+    sh:or (
+      [
+        sh:class gvo:PhysAdminPlaceConcept ;
+      ]
+      [
+        sh:class gvo:PhysPlaceConcept ;
+      ]
+      [
+        sh:class gvo:AdminPlaceConcept ;
+      ]
+      [
+        sh:hasValue "(:unav)" ;
+      ]
+      [
+        sh:hasValue "(:unkn)" ;
+      ]
+    ) ;
+    sh:path dcterms:spatial ;
+    .
+
+}
+
+ucns:_DctermsSpatialData {
+  ex:_SpatialExampleFive
+    a ex:SpatialExample ;
+    dcterms:spatial "(:unkn)" ;
+    .
+
+  ex:_SpatialExampleFour
+    a ex:SpatialExample ;
+    dcterms:spatial "(:unav)" ;
+    .
+
+  ex:_SpatialExampleOne
+    a ex:SpatialExample ;
+    dcterms:spatial tgn:7544578 ;
+    .
+
+  ex:_SpatialExampleThree
+    a ex:SpatialExample ;
+    dcterms:spatial tgn:2008578 ;
+    .
+
+  ex:_SpatialExampleTwo
+    a ex:SpatialExample ;
+    dcterms:spatial tgn:2561094 ;
+    .
+
+
+  tgn:2008578
+    a gvo:AdminPlaceConcept ;
+    rdfs:lbale "Ivy" ;
+    .
+
+  tgn:2561094
+    a gvo:PhysPlaceConcept ;
+    rdfs:label "Orrs Pond" ;
+    .
+
+  tgn:7544578
+    a gvo:PhysAdminPlaceConcept ;
+    rdfs:label "Gudiyam Cave" ;
+    .
+}
+
+ucns:_DctermsCreatedShapes {
+
+  ucns:_DctermsCreatedShape 
+    a sh:NodeShape ;
+    sh:property ucns:_CreatedProperty ;
+    sh:targetClass ex:CreatedExample ;
+    .
+
+  ucns:_CreatedProperty
+    sh:datatype xsd:dateTime ;
+    sh:maxCount "1"^^xsd:integer ;
+    sh:message "There should be only one created property with an xsd:dateTime datatype" ;
+    sh:minCount "1"^^xsd:integer ;
+    sh:name "Created" ;
+    sh:path dcterms:created ;
+    sh:sparql [
+      a sh:SPARQLConstraint ;
+      sh:message "At least one of the dcterms:modified values should equal the dcterms:created value." ;
+      sh:prefixes <http://lib.uchicago.edu/shapes/> ;
+      sh:select """
+        SELECT $this $PATH ?dcCreated
+        WHERE {
+            $this
+              $PATH ?dcCreated ;
+          .
+          FILTER NOT EXISTS {
+            ?this dcterms:modified ?dcCreated .
+          }
+        }
+      """ ;
+    ] ;
+    .
+}
+
+ucns:_DctermsCreatedData {
+  ex:_DctermsCreatedExOne 
+    a ex:CreatedExample ;
+    dcterms:modified "2024-10-12"^^xsd:date , "2024-10-11"^^xsd:date , "2024-10-10"^^xsd:date;
+    dcterms:created "2024-10-10"^^xsd:date ;
+    .
+  ex:_DctermsCreatedExTwo
+    a ex:CreatedExample ;
+    dcterms:modified "2024-11-11"^^xsd:date , "2024-11-10"^^xsd:date , "2024-11-09"^^xsd:date;
+    dcterms:created "2024-10-10"^^xsd:date ;
+    .
+}
+
+pres:_MachingDifferentPossibleClasses
+  a pres:ShaclSlide ;
+  rdfs:label "Matching One of Many Classes" ;
+  pres:containsData ucns:_DctermsSpatialData ;
+  pres:containsShape ucns:_DctermsSpatialExample ;
+  pres:order "2"^^xsd:integer ;
+  .
+
+pres:_ShaclValidationArkIdentifiers
+  a pres:ShaclSlide ;
+  rdfs:label "Regular Expression Validation" ;
+  pres:containsData ucns:_ArkDctermsIdentifierData ;
+  pres:containsShape ucns:_ArkDctermsIdentifierExample ;
+  pres:order "1"^^xsd:integer ;
+  .
+
+pres:_ConstraingDcTypes 
+  a pres:ShaclSlide ;
+  rdfs:label "Constraining DCMI Types" ;
+  pres:containsData ucns:_DcTypeExampleData ;
+  pres:containsShape ucns:_DcTypeExample ;
+  pres:order "3"^^xsd:integer ;
+  .
+
+pres:_UsingSparqlRules 
+  a pres:SparqlSlide ;
+  rdfs:label "Agreement of One among Many" ;
+  pres:order "4" ;
+  pres:containsData ucns:_DctermsCreatedData ;
+  pres:containsShape ucns:_DctermsCreatedShapes;
+  pres:hasScript """PREFIX dc: <http://purl.org/dc/elements/1.1/> 
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX ucns: <http://lib.uchicago.edu/shapes/> 
+
+SELECT ?s ("dcterms:created" AS ?path) ?dcCreated 
+WHERE { 
+  GRAPH ucns:_DctermsCreatedData {
+    ?s 
+      dcterms:created ?dcCreated ;
+    .
+    FILTER NOT EXISTS {
+      ?s dcterms:modified ?dcCreated .
+    }
+  }
+}
+  """^^<https://www.iana.org/assignments/media-types/application/sparql-query> ;
+  .
+
