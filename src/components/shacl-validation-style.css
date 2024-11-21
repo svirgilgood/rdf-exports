@@ -65,7 +65,7 @@ body {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #e91e63;
+  color: #f4a236;
 }
 
 .token.selector,
@@ -92,7 +92,9 @@ body {
 }
 
 .token.function {
-  color: #f44336;
+  /* color: #f44336; */
+  /* color: #f77b72; */
+  color: #f9a19a;
 }
 
 .token.regex,
