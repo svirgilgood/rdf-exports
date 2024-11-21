@@ -92,7 +92,7 @@ function ShaclValidationSlide({
     setProgress(true);
     setValidationReport(printableRes);
     closeModal();
-    await delay(800);
+    await delay(500);
     setProgress(false);
   };
   const updateShapes = async (displayShapes) => {
@@ -122,16 +122,22 @@ function ShaclValidationSlide({
           uri={uri}
         />
       </Grid>
-      <button type="button" onClick={openModal}>
+      <button className="button" type="button" onClick={openModal}>
         Run Validation
       </button>
       <Modal isOpen={isModalOpen} hasCloseBtn={true} onClose={closeModal}>
         {showProgress ? (
           <progress value={null} />
         ) : (
-          <CodePane language="turtle" showLineNumbers={true}>
-            {validationReport}
-          </CodePane>
+          <CodeBox
+            title={"Validation Report"}
+            language="turtle"
+            // showLineNumbers={true}
+            code={validationReport}
+            uri={"https://example.com/validationReport"}
+            backgroundColor="quaternary"
+            isEditable={false}
+          />
         )}
       </Modal>
     </div>
