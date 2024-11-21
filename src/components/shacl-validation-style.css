@@ -1,25 +1,27 @@
-/* Page */
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-html,
-body,
-#root {
-  height: 100%;
-  width: 100%;
-}
+/* /* Page */
+*/
+/* html { */
+/*   box-sizing: border-box; */
+/* } */
+/**/
+/* *, */
+/* *:before, */
+/* *:after { */
+/*   box-sizing: inherit; */
+/* } */
+/**/
+/* html, */
+/* body, */
+/* #root { */
+/*   height: 100%; */
+/*   width: 100%; */
+/* } */
 
 body {
   font-family: "Fira code", "Fira Mono", Consolas, Menlo, Courier, monospace;
-  font-size: 14px;
+  font-size: 10px;
   line-height: 1.5;
+  color: #eff6e0;
   margin: 0;
   padding: 0;
 }
@@ -35,9 +37,10 @@ body {
 
 .container__content {
   width: 440px;
-  max-width: 100%;
+  max-width: 10%;
   padding: 10px;
   text-align: center;
+  overflow: auto;
 }
 
 .container_editor_area {
@@ -48,27 +51,31 @@ body {
 }
 
 .container__editor {
-  font-size: 12px;
+  font-size: 9px;
   font-variant-ligatures: common-ligatures;
   background-color: #fafafa;
   border-radius: 3px;
 }
 
 .container__editor textarea {
-  outline: 0;
+  outline: 1;
 }
 
-.button {
-  display: inline-block;
-  padding: 0 6px;
-  text-decoration: none;
-  background: #000;
-  color: #fff;
-}
-
-.button:hover {
-  background: linear-gradient(45deg, #e42b66, #e2433f);
-}
+/* .button { */
+/*   display: inline-block; */
+/*   padding: 0 6px; */
+/*   text-decoration: none; */
+/*   /* background: #000; */
+*/
+/*   background: red; */
+/*   /* color: #eff6e0; */
+*/
+/*   color: red; */
+/* } */
+/**/
+/* .button:hover { */
+/*   background: linear-gradient(45deg, #e42b66, #e2433f); */
+/* } */
 
 /* Syntax highlighting */
 .token.comment,
@@ -102,7 +109,8 @@ body {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #4caf50;
+  /* color: #4caf50; */
+  color: #6fb376;
 }
 
 .token.operator,
@@ -110,13 +118,13 @@ body {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #795548;
+  color: #aec3b0;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: #3f51b5;
+  color: #598392;
 }
 
 .token.function {

@@ -1,5 +1,5 @@
 .tabs-container {
-  width: 400px;
+  width: auto;
   margin: 20px auto;
 }
 
@@ -11,16 +11,23 @@
   cursor: pointer;
   padding: 10px;
   margin-right: 10px;
-  border: 1px solid #ddd;
+  /* border: 1px solid #eff6e0; */
   border-bottom: none;
-  background-color: #f1f1f1;
+  background-color: #598392;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .tab.active {
-  background-color: #ddd;
+  background-color: #124559;
+  color: #eff6e0;
+  /* background-color: #aec3b0; */
 }
 
-.tab-content {
-  border: 1px solid #ddd;
-  padding: 10px;
-}
+/* .tab-content */
+/* { */
+/* border: 1px solid #eff6e0; */
+/* padding: 10px; */
+/* } */

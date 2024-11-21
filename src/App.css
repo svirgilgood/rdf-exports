@@ -28,11 +28,34 @@
   color: #61dafb;
 }
 
+.modal {
+  background-color: #aec3b0;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.button {
+  display: inline-block;
+  padding: 0 6px;
+  text-decoration: none;
+  /* background: #000; */
+  background: #eff6e0;
+  color: #01161e;
+  border-radius: 8px;
+  border: 10px;
+  border-color: #01161e;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.button:hover {
+  /* background: linear-gradient(45deg, #e42b66, #e2433f); */
+  background: linear-gradient(4deg, #eff6e0, #124559);
 }
