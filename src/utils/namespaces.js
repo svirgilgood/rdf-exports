@@ -41,6 +41,7 @@ const namespaces = {
     containsShape: namedNode(PresBase + "containsShape"),
     containsData: namedNode(PresBase + "containsData"),
     hasScript: namedNode(PresBase + "hasScript"),
+    notes: namedNode(PresBase + "notes"),
     order: namedNode(PresBase + "order"),
     ShaclSlide: namedNode(PresBase + "ShaclSlide"),
     SparqlSlide: namedNode(PresBase + "SparqlSlide"),
