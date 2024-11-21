@@ -58,6 +58,10 @@
   background: linear-gradient(4deg, #eff6e0, #124559);
 }
 
+.button:disabled {
+  background: #808080;
+}
+
 .modal-close-btn {
   /* display: inline-block; */
   padding: 0 6px;
