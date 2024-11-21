@@ -60,21 +60,7 @@ function ShaclValidationSlide({
   const [shapeStore, setShapeStore] = useState(shaclStore);
   const [dataValidationStore, setDataStore] = useState(dataStore);
   const [showProgress, setProgress] = useState(false);
-  // const [shapeGraph, setShapeGraph] = useState();
-  /*               uri={slideUri}
-              title={title}
-              shaclStore={shaclStore}
-              shacl={shacl}
-              updateShacl={updateShacl}
-              data={data}
-              dataStore={dataStore}
-              updateData={updateData}
-              */
 
-  // useEffect(() => {
-  //   const shapeQuads = store.getQuads(null, null, null, focusNode);
-  //   setShapeGraph(new Store(shapeQuads));
-  // }, [focusNode]);
   const closeModal = () => {
     setModal(!isModalOpen);
   };
@@ -132,7 +118,6 @@ function ShaclValidationSlide({
           <CodeBox
             title={"Validation Report"}
             language="turtle"
-            // showLineNumbers={true}
             code={validationReport}
             uri={"https://example.com/validationReport"}
             backgroundColor="quaternary"

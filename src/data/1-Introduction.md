@@ -15,14 +15,6 @@
 - Link out to existing authorities (like Library of Congress's Linked Data service and Getty's Topographical Name service)
 - Linked Data is one of the targets service to be good participants in a shared web of humanities data. (Matching Europeana's data model in key points)
 
-```mermaid
-graph TD
-    A[Project Data] -- Cleaned and normalized --> B[OCHRE]
-    B -- JSON/XML API --> C[Web User Interface]
-    B -- RDF --> D[Sparql Endpoint]
-
-```
-
 ---
 
 ## OWL vs SHACL

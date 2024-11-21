@@ -39,16 +39,11 @@ function CodeBox({
           value={displayCode}
           onValueChange={(displayCode) => setCode(displayCode)}
           highlight={(displayCode) => highlighter(displayCode, lang)}
-          // style={{ ...vsDark }}
           style={{
             fontFamily: '"Fira code", "Fira Mono", monospace',
             fontSize: "9",
-            // backgroundColor: "#1E1E1E",
             backgroundColor: "#124559",
             color: "#EFF6E0",
-            // maxHeight: "400px",
-            // focus: "auto",
-            // borderColor: "#EFF6E0",
             overflow: "autao",
             caretColor: "#EFF6E0",
           }}
