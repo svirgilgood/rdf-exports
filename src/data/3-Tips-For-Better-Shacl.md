@@ -13,9 +13,7 @@
 ## Use Named Nodes and Not Blank Nodes
 
 - Using Named Nodes provides better context for Error Messages
-
 - This makes it easier to locate and understand why the message was generated
-
 - All of the SHACL documentation uses blank nodes, but it is better to not use them for your Node Shapes and Property Shapes
 
 ---
@@ -29,9 +27,6 @@
 ## Closed Shapes
 
 - A Closed shape means that only the properties defined in the shape can be used on an instance of that shape.
-
 - A closed shape breaks the Open World Assumption
-
 - Closed Shapes allow for greater control over your constraints
-
 - Closed shapes mean no additional data can be included

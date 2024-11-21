@@ -2,7 +2,7 @@
 
 ---
 
-## Using Regular Expressions to Validate Strings
+## Using regular expressions to validate strings
 
 - We are using ARK identifiers for each of our objects
 - We want to make sure that these objects match the ark identifier minting pattern
@@ -22,7 +22,7 @@ ucns:_ArkDctermsIdentifierProperty
 
 ---
 
-## Matching Different Possible Classes for Objects
+## Matching different possible classes
 
 ```turtle
 ucns:_DctermsSpatialProperty
@@ -42,7 +42,7 @@ ucns:_DctermsSpatialProperty
 
 --- {"layout" : "columns"}
 
-## Matching Agreement of One among Many
+## Matching agreement of one among many
 
 ::section
 
