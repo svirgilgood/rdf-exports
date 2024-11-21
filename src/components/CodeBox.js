@@ -20,6 +20,8 @@ function CodeBox({
   isEditable = true,
 }) {
   const [displayCode, setCode] = useState(code);
+  const [savedCode, setSavedCode] = useState(code);
+
   const highlighter = (displayCode) => {
     try {
       return highlight(displayCode, languages.turtle);
@@ -30,6 +32,11 @@ function CodeBox({
     }
   };
   const lang = language === "turtle" ? languages.turtle : languages.sparql;
+
+  const saveCode = (displayCode) => {
+    setSavedCode(displayCode);
+    updateCode(displayCode, uri);
+  };
 
   return (
     <Box backgroundColor={backgroundColor}>
@@ -51,9 +58,9 @@ function CodeBox({
       </div>
       {isEditable && (
         <button
-          disabled={code === displayCode}
+          disabled={savedCode === displayCode}
           type="button"
-          onClick={() => updateCode(displayCode, uri)}
+          onClick={() => saveCode(displayCode)}
           className="button"
         >
           Save
