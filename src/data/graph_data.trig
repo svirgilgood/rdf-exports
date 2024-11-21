@@ -225,7 +225,7 @@ pres:_MachingDifferentPossibleClasses
 
 pres:_ShaclValidationArkIdentifiers
   a pres:ShaclSlide ;
-  rdfs:label "Regular Expression Validation" ;
+  rdfs:label "Regular expression validation" ;
   pres:containsData ucns:_ArkDctermsIdentifierData ;
   pres:containsShape ucns:_ArkDctermsIdentifierExample ;
   pres:order "1"^^xsd:integer ;
@@ -233,7 +233,7 @@ pres:_ShaclValidationArkIdentifiers
 
 pres:_ConstraingDcTypes 
   a pres:ShaclSlide ;
-  rdfs:label "Constraining DCMI Types" ;
+  rdfs:label "Constraining DCMI types" ;
   pres:containsData ucns:_DcTypeExampleData ;
   pres:containsShape ucns:_DcTypeExample ;
   pres:order "3"^^xsd:integer ;
@@ -241,7 +241,7 @@ pres:_ConstraingDcTypes
 
 pres:_UsingSparqlRules 
   a pres:SparqlSlide ;
-  rdfs:label "Agreement of One among Many" ;
+  rdfs:label "Agreement of one among many" ;
   pres:order "4" ;
   pres:containsData ucns:_DctermsCreatedData ;
   pres:containsShape ucns:_DctermsCreatedShapes;
