@@ -92,9 +92,12 @@ body {
 }
 
 .token.function {
+  /* color: #aa2e25; */
+  /* color: #db3c30; */
   /* color: #f44336; */
+  color: #f5554a;
   /* color: #f77b72; */
-  color: #f9a19a;
+  /* color: #f9a19a; */
 }
 
 .token.regex,
