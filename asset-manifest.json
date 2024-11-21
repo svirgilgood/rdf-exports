@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/constraining-linked-open-data/static/css/main.7ab60fcb.css",
-    "main.js": "/constraining-linked-open-data/static/js/main.db1888d6.js",
+    "main.css": "/constraining-linked-open-data/static/css/main.403a1ef3.css",
+    "main.js": "/constraining-linked-open-data/static/js/main.2724987b.js",
     "static/js/453.d9d4cbd7.chunk.js": "/constraining-linked-open-data/static/js/453.d9d4cbd7.chunk.js",
-    "static/media/graph_data.trig": "/constraining-linked-open-data/static/media/graph_data.2d14159a952fe0f47ff2.trig",
-    "static/media/2-Shacl-Examples.md": "/constraining-linked-open-data/static/media/2-Shacl-Examples.be87f776830db305a733.md",
-    "static/media/1-Introduction.md": "/constraining-linked-open-data/static/media/1-Introduction.8e8120a9116618a55cdc.md",
-    "static/media/3-Tips-For-Better-Shacl.md": "/constraining-linked-open-data/static/media/3-Tips-For-Better-Shacl.e584fc3f0c84102ae685.md",
+    "static/media/graph_data.trig": "/constraining-linked-open-data/static/media/graph_data.9e32a9cdd334ebb22ba9.trig",
+    "static/media/2-Shacl-Examples.md": "/constraining-linked-open-data/static/media/2-Shacl-Examples.4cd1e3fef0587dd3ea32.md",
+    "static/media/1-Introduction.md": "/constraining-linked-open-data/static/media/1-Introduction.a1aca84c803a07a3da9f.md",
+    "static/media/3-Tips-For-Better-Shacl.md": "/constraining-linked-open-data/static/media/3-Tips-For-Better-Shacl.7244ae3d54ea8c4323a8.md",
     "index.html": "/constraining-linked-open-data/index.html",
-    "static/media/4-Bibliography.md": "/constraining-linked-open-data/static/media/4-Bibliography.f31e147268da291387d6.md",
-    "main.7ab60fcb.css.map": "/constraining-linked-open-data/static/css/main.7ab60fcb.css.map",
-    "main.db1888d6.js.map": "/constraining-linked-open-data/static/js/main.db1888d6.js.map",
+    "static/media/4-Bibliography.md": "/constraining-linked-open-data/static/media/4-Bibliography.5fa5d42fd01f0b7e11ce.md",
+    "main.403a1ef3.css.map": "/constraining-linked-open-data/static/css/main.403a1ef3.css.map",
+    "main.2724987b.js.map": "/constraining-linked-open-data/static/js/main.2724987b.js.map",
     "453.d9d4cbd7.chunk.js.map": "/constraining-linked-open-data/static/js/453.d9d4cbd7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ab60fcb.css",
-    "static/js/main.db1888d6.js"
+    "static/css/main.403a1ef3.css",
+    "static/js/main.2724987b.js"
   ]
 }
