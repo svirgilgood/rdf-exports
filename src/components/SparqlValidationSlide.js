@@ -5,23 +5,9 @@ import CodeBox from "./CodeBox";
 import Modal from "./Modal";
 import { parseTriples } from "../utils/utils.ts";
 import { Store } from "n3";
-import { Tab, Tabs } from "./TabComponent";
-
-// import "./shacl-validation-style.css";
+import { Tab } from "./TabComponent";
 
 const myEngine = new QueryEngine();
-
-/*function ShaclValidationSlide({
-  title,
-  uri,
-  shacl,
-  shaclStore,
-  data,
-  dataStore,
-  prefixes,
-  updatePrefixes,
-}) {
-*/
 
 function ResultRow({ binding, headings, setHeadings }) {
   const data = [];
@@ -52,11 +38,11 @@ function ResultTable({ bindings }) {
 
   useEffect(() => {
     const headings = [];
-    for (const [key, __] of bindings[0]) {
+    for (const [key, _] of bindings[0]) {
       headings.push(key.value);
     }
     setHeadings(headings);
-  }, []);
+  }, [bindings]);
   if (bindings.length === 0) {
     return <h3>No Results</h3>;
   }
@@ -90,8 +76,6 @@ function SparqlSlide(props) {
     dataDisplayString,
     uri,
     title,
-    prefixes,
-    shapeStore,
     shapeDisplayString,
     updatePrefixes,
   } = props;
@@ -160,6 +144,7 @@ function SparqlSlide(props) {
                   uri={"https://example.com/sparql"}
                   code={query}
                   language={"sparql"}
+                  updateCode={updateQuery}
                 />
               )}
             </div>
