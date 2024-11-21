@@ -17,6 +17,7 @@ import tipsRaw from "./data/3-Tips-For-Better-Shacl.md";
 import bibliographyRaw from "./data/4-Bibliography.md";
 import graphRaw from "./data/graph_data.trig";
 import SparqlSlide from "./components/SparqlValidationSlide";
+import constrainingTheme from "./themes/constraining_theme";
 
 const parser = new Parser();
 
@@ -176,7 +177,7 @@ function App() {
   }
 
   return (
-    <Deck template={<DefaultTemplate />}>
+    <Deck theme={constrainingTheme} template={<DefaultTemplate />}>
       <MarkdownSlideSet>{introMd}</MarkdownSlideSet>
       {/*<MarkdownSlideSet>{shaclMd}</MarkdownSlideSet>*/}
       {shaclSlides.map(
@@ -227,6 +228,7 @@ function App() {
                 uri={uri}
                 store={store}
                 prefixes={prefixes}
+                updatePrefixes={setPrefixes}
               />
             </Slide>
           );
