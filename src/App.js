@@ -2,7 +2,13 @@ import "./App.css";
 
 import React, { useEffect, useState } from "react";
 
-import { Deck, Slide, DefaultTemplate, MarkdownSlideSet } from "spectacle";
+import {
+  Deck,
+  Slide,
+  DefaultTemplate,
+  MarkdownSlideSet,
+  Notes,
+} from "spectacle";
 import ShaclValidationSlide from "./components/ShaclValidationSlide";
 import { Parser, Store } from "n3";
 
@@ -12,16 +18,13 @@ import { serialize } from "./utils/utils.ts";
 //import raw from "data/ConstraintsFroLinkedOpenData.md";
 // import raw from "./data/ConstraintsForLinkedOpenData.md";
 import introRaw from "./data/1-Introduction.md";
-import shaclExamplesRaw from "./data/2-Shacl-Examples.md";
 import tipsRaw from "./data/3-Tips-For-Better-Shacl.md";
 import bibliographyRaw from "./data/4-Bibliography.md";
 import graphRaw from "./data/graph_data.trig";
 import SparqlSlide from "./components/SparqlValidationSlide";
 import constrainingTheme from "./themes/constraining_theme";
 
-const parser = new Parser();
-
-const { rdf, rdfs, pres, sh } = namespaces;
+const { rdf, rdfs, pres } = namespaces;
 
 function parseTriples(triples) {
   const parser = new Parser();
@@ -44,7 +47,6 @@ async function loadText(rawMarkdown, setMd) {
 
 function App() {
   const [introMd, setIntro] = useState("");
-  const [shaclMd, setShaclMd] = useState("");
   const [tipsMd, setTips] = useState("");
   const [bibMd, setBib] = useState("");
   const [prefixes, setPrefixes] = useState({});
@@ -55,11 +57,10 @@ function App() {
   // use effect to load markdown files
   useEffect(() => {
     loadText(introRaw, setIntro);
-    loadText(shaclExamplesRaw, setShaclMd);
     loadText(tipsRaw, setTips);
     loadText(bibliographyRaw, setBib);
   }, []);
-  // use effect to load the store
+  // use effectetto load the store
   useEffect(() => {
     async function loadGraph(rawTrig) {
       const response = await fetch(rawTrig);
@@ -99,6 +100,7 @@ function App() {
         const dataDisplayString = await serialize(dataStore, prefixes);
 
         const title = newStore.getObjects(slideNode, rdfs.label).pop().value;
+        const notes = newStore.getObjects(slideNode, pres.notes).pop()?.value;
         slides.push({
           title,
           slideUri,
@@ -106,6 +108,7 @@ function App() {
           shapeDisplayString,
           dataStore,
           dataDisplayString,
+          notes,
         });
       }
       setShaclSlides(slides);
@@ -152,6 +155,7 @@ function App() {
           .pop();
         const title = store.getObjects(qwad.subject, rdfs.label).pop();
         const uri = qwad.subject.value;
+        const notes = store.getObjects(qwad.subject, pres.notes).pop()?.value;
         slides.push({
           shapeStore,
           shapeDisplayString,
@@ -160,12 +164,13 @@ function App() {
           initialQuery: initialQuery.value,
           title: title.value,
           uri,
+          notes,
         });
       }
       setSparqlSlides(slides);
     }
     createSparqlSlides(store);
-  }, [store]);
+  }, [store, prefixes]);
 
   if (
     !shaclSlides ||
@@ -188,6 +193,7 @@ function App() {
           shapeDisplayString,
           dataStore,
           dataDisplayString,
+          notes,
         }) => {
           return (
             <Slide key={slideUri}>
@@ -201,6 +207,11 @@ function App() {
                 prefixes={prefixes}
                 updatePrefixes={setPrefixes}
               />
+              {notes && (
+                <Notes>
+                  <div dangerouslySetInnerHTML={{ __html: notes }}></div>
+                </Notes>
+              )}
             </Slide>
           );
         },
@@ -215,6 +226,7 @@ function App() {
           dataStore,
           dataDisplayString,
           title,
+          notes,
         }) => {
           return (
             <Slide key={uri}>
@@ -230,6 +242,11 @@ function App() {
                 prefixes={prefixes}
                 updatePrefixes={setPrefixes}
               />
+              {notes && (
+                <Notes>
+                  <div dangerouslySetInnerHTML={{ __html: notes }}></div>
+                </Notes>
+              )}
             </Slide>
           );
         },
