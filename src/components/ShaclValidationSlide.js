@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SHACLValidator from "rdf-validate-shacl";
 import { Store } from "n3";
-import { CodePane, Grid, Heading } from "spectacle";
+import { Grid, Heading } from "spectacle";
 import "./shacl-validation-style.css";
 import Modal from "./Modal";
 import { serialize, parseTriples } from "../utils/utils.ts";
