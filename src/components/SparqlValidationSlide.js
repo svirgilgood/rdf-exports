@@ -7,6 +7,8 @@ import { parseTriples } from "../utils/utils.ts";
 import { Store } from "n3";
 import { Tab, Tabs } from "./TabComponent";
 
+// import "./shacl-validation-style.css";
+
 const myEngine = new QueryEngine();
 
 /*function ShaclValidationSlide({
@@ -47,6 +49,7 @@ function ResultsHeading({ headings }) {
 
 function ResultTable({ bindings }) {
   const [headings, setHeadings] = useState([]);
+
   useEffect(() => {
     const headings = [];
     for (const [key, __] of bindings[0]) {
@@ -54,6 +57,9 @@ function ResultTable({ bindings }) {
     }
     setHeadings(headings);
   }, []);
+  if (bindings.length === 0) {
+    return <h3>No Results</h3>;
+  }
   if (headings.length === 0) return null;
 
   return (
@@ -95,6 +101,7 @@ function SparqlSlide(props) {
   const [isModalOpen, setModalOpen] = useState(false);
   const [dataValidationStore, setDataStore] = useState(dataStore);
   const [activeTab, setActiveTab] = useState("shacl");
+  const [isQueryFinished, setQueryFinished] = useState(false);
 
   const runQuery = async () => {
     const bindingsStream = await myEngine.queryBindings(query, {
@@ -102,6 +109,7 @@ function SparqlSlide(props) {
     });
     const bindings = await bindingsStream.toArray();
     setBindings(bindings);
+    setQueryFinished(true);
     setModalOpen(true);
   };
 
@@ -125,18 +133,18 @@ function SparqlSlide(props) {
           <div className="tabs-container">
             <div className="tabs">
               <Tab
-                label="Shacl"
+                label="SHACL"
                 onClick={() => setActiveTab("shacl")}
                 isActive={"shacl" === activeTab}
               >
-                {"Shacl"}
+                {"SHACL"}
               </Tab>
               <Tab
-                label="Sparql"
+                label="SPARQL"
                 onClick={() => setActiveTab("sparql")}
                 isActive={"sparql" === activeTab}
               >
-                {"Sparql"}
+                {"SPARQL"}
               </Tab>
             </div>
             <div className="tab-content">
@@ -144,15 +152,14 @@ function SparqlSlide(props) {
                 <CodeBox
                   key="shacl"
                   uri={"https://example.com/shacl"}
-                  title={"Shacl"}
                   code={shapeDisplayString}
                 />
               ) : (
                 <CodeBox
                   key="sparql"
                   uri={"https://example.com/sparql"}
-                  title={"Sparql"}
                   code={query}
+                  language={"sparql"}
                 />
               )}
             </div>
@@ -164,12 +171,18 @@ function SparqlSlide(props) {
           code={dataDisplayString}
           updateCode={updateData}
         />
-        {bindings.length > 0 && (
+        {isQueryFinished && (
           <Modal isOpen={isModalOpen} hasCloseBtn={true} onClose={closeModal}>
             <ResultTable bindings={bindings} />
           </Modal>
         )}
-        <button onClick={() => runQuery()}>Execute Query</button>
+        <button
+          className="button"
+          style={{ maxWidth: "25%" }}
+          onClick={() => runQuery()}
+        >
+          Execute Query
+        </button>
       </Grid>
     </div>
   );
