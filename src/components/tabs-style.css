@@ -11,7 +11,6 @@
   cursor: pointer;
   padding: 10px;
   margin-right: 10px;
-  /* border: 1px solid #eff6e0; */
   border-bottom: none;
   background-color: #598392;
   border-top-right-radius: 10px;
@@ -23,11 +22,4 @@
 .tab.active {
   background-color: #124559;
   color: #eff6e0;
-  /* background-color: #aec3b0; */
 }
-
-/* .tab-content */
-/* { */
-/* border: 1px solid #eff6e0; */
-/* padding: 10px; */
-/* } */
