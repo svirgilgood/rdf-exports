@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/constraining-linked-open-data/static/css/main.93aec4c3.css",
+    "main.css": "/constraining-linked-open-data/static/css/main.6541fbc8.css",
     "main.js": "/constraining-linked-open-data/static/js/main.554788ee.js",
     "static/js/453.d9d4cbd7.chunk.js": "/constraining-linked-open-data/static/js/453.d9d4cbd7.chunk.js",
     "static/media/graph_data.trig": "/constraining-linked-open-data/static/media/graph_data.9e32a9cdd334ebb22ba9.trig",
@@ -9,12 +9,12 @@
     "static/media/3-Tips-For-Better-Shacl.md": "/constraining-linked-open-data/static/media/3-Tips-For-Better-Shacl.7244ae3d54ea8c4323a8.md",
     "index.html": "/constraining-linked-open-data/index.html",
     "static/media/4-Bibliography.md": "/constraining-linked-open-data/static/media/4-Bibliography.5fa5d42fd01f0b7e11ce.md",
-    "main.93aec4c3.css.map": "/constraining-linked-open-data/static/css/main.93aec4c3.css.map",
+    "main.6541fbc8.css.map": "/constraining-linked-open-data/static/css/main.6541fbc8.css.map",
     "main.554788ee.js.map": "/constraining-linked-open-data/static/js/main.554788ee.js.map",
     "453.d9d4cbd7.chunk.js.map": "/constraining-linked-open-data/static/js/453.d9d4cbd7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.93aec4c3.css",
+    "static/css/main.6541fbc8.css",
     "static/js/main.554788ee.js"
   ]
 }
