@@ -41,7 +41,7 @@ function CodeBox({
           highlight={(displayCode) => highlighter(displayCode, lang)}
           style={{
             fontFamily: '"Fira code", "Fira Mono", monospace',
-            fontSize: "9",
+            fontSize: "14px",
             backgroundColor: "#124559",
             color: "#EFF6E0",
             overflow: "autao",
