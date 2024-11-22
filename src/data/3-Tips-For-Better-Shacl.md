@@ -1,4 +1,4 @@
-## Principles for Better SHACL
+## Principles for better SHACL
 
 ---
 
@@ -32,7 +32,7 @@ Notes: It is really good practice to use sh:messages. These are difficult to wor
 
 ## Closed shapes
 
-- A Closed shape means that only the properties defined in the shape can be used on an instance of that shape.
+- A closed shape means that only the properties defined in the shape can be used on an instance of that shape.
 - A closed shape breaks the Open World Assumption
 - Closed shapes allow for greater control over your constraints
 - Closed shapes mean no additional data can be included

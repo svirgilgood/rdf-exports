@@ -17,8 +17,8 @@ Notes: UChicagoNode is a partnership between the Library and Forum for Digital C
 
 ## Linked Open Data and UChicagoNode
 
-- Link out to existing authorities (like Library of Congress's Linked Data service and Getty's Topographical Name service)
-- Linked Data is one of the targets service to be good participants in a shared web of humanities data. (Matching Europeana's data model in key points)
+- Link out to existing authorities (like Library of Congress's Linked Data service and Getty's geographical name thesaurus)
+- Linked Data is one of the targets of UChicagoNode (Matching Europeana's data model in key points)
 
 Notes: UChicagoNode will be part of Linked open data. | The triples will eventually be machine accessible as triples.
 

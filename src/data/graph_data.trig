@@ -214,7 +214,7 @@ ucns:_DctermsCreatedData {
 
 pres:_MachingDifferentPossibleClasses
   a pres:ShaclSlide ;
-  rdfs:label "Matching One of Many Classes" ;
+  rdfs:label "Matching one of many classes" ;
   pres:notes """We are targeting a new class. 
   <p>Notice, we have a minCount, but no maxCount. More than one place can be targeted</p> 
   <p>The predicate we are targeting is different dcterms:spatial</p>
