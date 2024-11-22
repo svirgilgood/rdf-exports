@@ -4,7 +4,7 @@
 
 ## Define your data
 
-- Try to avoid using `xsd:anyURI` and bare `xsd:string` as data types.
+- Try to avoid using `xsd:anyURI` and bare `xsd:string` as data types
 - Ask the question: what do you want this data to be?
 - The more precise your definitions the better control you can have over the data
 

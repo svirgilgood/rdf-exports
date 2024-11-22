@@ -223,6 +223,7 @@ pres:_MachingDifferentPossibleClasses
   <p>The sh:or predicate can be used to show the different values that are acceptable. When it comes to the specific value though 
   it changes patterns.</p>
   <p>We can make the validation fail, if we change the spelling of one of the "unav"</p>
+  <p>the unav and unkn are part of the <a href="https://www.dublincore.org/groups/kernel/spec/">dublin core kernel spec</a>.</p>
   """ ; 
   pres:containsData ucns:_DctermsSpatialData ;
   pres:containsShape ucns:_DctermsSpatialExample ;
