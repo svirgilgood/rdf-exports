@@ -38,15 +38,17 @@ function ResultTable({ bindings }) {
 
   useEffect(() => {
     const headings = [];
+    if (bindings.length === 0) {
+      setHeadings(headings);
+      return;
+    }
+
     for (const [key, _] of bindings[0]) {
       headings.push(key.value);
     }
     setHeadings(headings);
   }, [bindings]);
-  if (bindings.length === 0) {
-    return <h3>No Results</h3>;
-  }
-  if (headings.length === 0) return null;
+  if (headings.length === 0) return <h3>No Results</h3>;
 
   return (
     <table>
