@@ -175,13 +175,13 @@ ucns:_DctermsCreatedShapes {
   ucns:_CreatedProperty
     sh:datatype xsd:dateTime ;
     sh:maxCount "1"^^xsd:integer ;
-    sh:message "Only one created property, but should match a modified properites." ;
+    sh:message "Only one created property, but should match a modified properity." ;
     sh:minCount "1"^^xsd:integer ;
     sh:name "Created" ;
     sh:path dcterms:created ;
     sh:sparql [
       a sh:SPARQLConstraint ;
-      sh:message "Only one created property, but should match a modified properites." ;
+      sh:message "Only one created property, but should match a modified properity." ;
       sh:prefixes <http://lib.uchicago.edu/shapes/> ;
       sh:select """
         SELECT $this $PATH ?dcCreated
