@@ -4,7 +4,24 @@ import { isBlankNode, isLiteral, isNamedNode } from "n3/lib/N3Util";
 
 const { quad } = DataFactory;
 
-function constructBlankNode({ store, qwad, accumulator }) {
+type BNodeObj = {
+  predicate: Term;
+  object: Term;
+}
+
+type BlankNodeConstruction = {
+  store: Store;
+  qwad: Quad;
+  accumulator: BNodeObj[];
+}
+
+///
+/*
+ *
+*/
+///
+function constructBlankNode(args: BlankNodeConstruction) {
+  let { store, qwad, accumulator } = args;
   const { predicate, object } = qwad;
   if (isNamedNode(object) || isLiteral(object)) {
     accumulator.push({ predicate, object });
@@ -25,7 +42,7 @@ function constructLists({ store, lists, focusNode, writer }) {
   const list: Array<any> = [];
   lists[focusNode.value].forEach(async (listNode) => {
     if (isNamedNode(listNode) || isLiteral(listNode)) return listNode;
-    const accumulator = [];
+    const accumulator: BNodeObj[] = [];
     // console.log("store list nodes", store.getQuads(listNode));
     const savequads = store.getQuads(listNode).map((qwad) => {
       return constructBlankNode({ store, qwad, accumulator });

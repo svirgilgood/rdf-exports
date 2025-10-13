@@ -17,11 +17,7 @@ import { serialize } from "./utils/utils.ts";
 
 //import raw from "data/ConstraintsFroLinkedOpenData.md";
 // import raw from "./data/ConstraintsForLinkedOpenData.md";
-import introRaw from "./data/1-Introduction.md";
-import tipsRaw from "./data/3-Tips-For-Better-Shacl.md";
-import bibliographyRaw from "./data/4-Bibliography.md";
-import graphRaw from "./data/graph_data.trig";
-import SparqlSlide from "./components/SparqlValidationSlide";
+import rdfOverview from "./data/1.-rdf-overview.md";
 import constrainingTheme from "./themes/constraining_theme";
 
 const { rdf, rdfs, pres } = namespaces;
@@ -46,9 +42,7 @@ async function loadText(rawMarkdown, setMd) {
 }
 
 function App() {
-  const [introMd, setIntro] = useState("");
-  const [tipsMd, setTips] = useState("");
-  const [bibMd, setBib] = useState("");
+  const [md, setMd] = useState("");
   const [prefixes, setPrefixes] = useState({});
   const [shaclSlides, setShaclSlides] = useState([]);
   const [sparqlSlides, setSparqlSlides] = useState([]);
@@ -56,11 +50,10 @@ function App() {
 
   // use effect to load markdown files
   useEffect(() => {
-    loadText(introRaw, setIntro);
-    loadText(tipsRaw, setTips);
-    loadText(bibliographyRaw, setBib);
+    loadText(rdfOverview, setMd);
   }, []);
   // use effectetto load the store
+  /*
   useEffect(() => {
     async function loadGraph(rawTrig) {
       const response = await fetch(rawTrig);
@@ -172,6 +165,8 @@ function App() {
     createSparqlSlides(store);
   }, [store, prefixes]);
 
+*/
+  /*
   if (
     !shaclSlides ||
     shaclSlides.length === 0 ||
@@ -180,12 +175,18 @@ function App() {
   ) {
     return <div>Building</div>;
   }
+  */
+
+  if (md === "") {
+    return <div>Building</div>
+  }
+
 
   return (
     <Deck theme={constrainingTheme} template={<DefaultTemplate />}>
-      <MarkdownSlideSet>{introMd}</MarkdownSlideSet>
+      <MarkdownSlideSet>{md}</MarkdownSlideSet>
       {/*<MarkdownSlideSet>{shaclMd}</MarkdownSlideSet>*/}
-      {shaclSlides.map(
+      {/*shaclSlides.map(
         ({
           title,
           slideUri,
@@ -215,9 +216,9 @@ function App() {
             </Slide>
           );
         },
-      )}
+      )*/}
 
-      {sparqlSlides.map(
+      {/*sparqlSlides.map(
         ({
           uri,
           initialQuery,
@@ -250,10 +251,10 @@ function App() {
             </Slide>
           );
         },
-      )}
+      )*/}
 
-      <MarkdownSlideSet>{tipsMd}</MarkdownSlideSet>
-      <MarkdownSlideSet>{bibMd}</MarkdownSlideSet>
+      {/*<MarkdownSlideSet>{tipsMd}</MarkdownSlideSet>
+      <MarkdownSlideSet>{bibMd}</MarkdownSlideSet>*/}
     </Deck>
   );
 }
