@@ -183,8 +183,8 @@ function App() {
 
 
   return (
-    <Deck theme={constrainingTheme} template={<DefaultTemplate />}>
-      <MarkdownSlideSet>{md}</MarkdownSlideSet>
+    <Deck  theme={constrainingTheme} template={<DefaultTemplate />}>
+      <MarkdownSlideSet animateListItems>{md}</MarkdownSlideSet>
       {/*<MarkdownSlideSet>{shaclMd}</MarkdownSlideSet>*/}
       {/*shaclSlides.map(
         ({
