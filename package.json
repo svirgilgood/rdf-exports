@@ -1,8 +1,8 @@
 {
-  "name": "RDF-Overview",
+  "name": "RDF-Exports",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://svirgilgood.github.io/rdf-overview/",
+  "homepage": "https://svirgilgood.github.io/rdf-exports/",
   "dependencies": {
     "@comunica/query-sparql": "^4.0.2",
     "@testing-library/jest-dom": "^5.17.0",
