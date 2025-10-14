@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/rdf-overview/static/css/main.1ba31535.css",
-    "main.js": "/rdf-overview/static/js/main.0bb87a9c.js",
-    "static/js/453.a7e4b8dc.chunk.js": "/rdf-overview/static/js/453.a7e4b8dc.chunk.js",
-    "static/media/1.-rdf-overview.md": "/rdf-overview/static/media/1.-rdf-overview.6587068853d5e465d327.md",
-    "index.html": "/rdf-overview/index.html",
-    "main.1ba31535.css.map": "/rdf-overview/static/css/main.1ba31535.css.map",
-    "main.0bb87a9c.js.map": "/rdf-overview/static/js/main.0bb87a9c.js.map",
-    "453.a7e4b8dc.chunk.js.map": "/rdf-overview/static/js/453.a7e4b8dc.chunk.js.map"
+    "main.css": "/rdf-exports/static/css/main.1ba31535.css",
+    "main.js": "/rdf-exports/static/js/main.a4e38771.js",
+    "static/js/453.8c340e07.chunk.js": "/rdf-exports/static/js/453.8c340e07.chunk.js",
+    "static/media/1.-rdf-overview.md": "/rdf-exports/static/media/1.-rdf-overview.6587068853d5e465d327.md",
+    "index.html": "/rdf-exports/index.html",
+    "main.1ba31535.css.map": "/rdf-exports/static/css/main.1ba31535.css.map",
+    "main.a4e38771.js.map": "/rdf-exports/static/js/main.a4e38771.js.map",
+    "453.8c340e07.chunk.js.map": "/rdf-exports/static/js/453.8c340e07.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1ba31535.css",
-    "static/js/main.0bb87a9c.js"
+    "static/js/main.a4e38771.js"
   ]
 }
