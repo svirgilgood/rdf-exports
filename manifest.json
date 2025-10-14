@@ -1,6 +1,6 @@
 {
-  "short_name": "Constraints",
-  "name": "Constraints For Linked Open Data",
+  "short_name": "RDF Exports",
+  "name": "RDF Exports",
   "icons": [
     {
       "src": "favicon.ico",
