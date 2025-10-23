@@ -1,6 +1,6 @@
 # RDF Exports
 
-This presentation
+This presentation talks about the basics of RDF.
 
 ## Abstract
 
